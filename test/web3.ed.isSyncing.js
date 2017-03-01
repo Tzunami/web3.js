@@ -21,7 +21,7 @@ var tests = [{
     call: 'eth_syncing'
 }];
 
-describe('eth', function () {
+describe('ed', function () {
     describe(method, function () {
         tests.forEach(function (test, index) {
             it('property test: ' + index, function (done) {

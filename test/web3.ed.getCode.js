@@ -20,5 +20,5 @@ var tests = [{
     call: 'eth_'+ method
 }];
 
-testMethod.runTests('eth', method, tests);
+testMethod.runTests('ed', method, tests);
 

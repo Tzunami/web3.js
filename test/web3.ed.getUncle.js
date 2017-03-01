@@ -133,4 +133,4 @@ var tests = [{
     call: 'eth_getUncleByBlockNumberAndIndex'
 }];
 
-testMethod.runTests('eth', method, tests);
+testMethod.runTests('ed', method, tests);

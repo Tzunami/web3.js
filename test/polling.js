@@ -6,7 +6,7 @@ var FakeHttpProvider = require('./helpers/FakeHttpProvider');
 var utils = require('../lib/utils/utils');
 
 var tests = [{
-    protocol: 'eth',
+    protocol: 'ed',
     args: ['latest'],
     firstResult: 1,
     firstPayload: {
@@ -19,7 +19,7 @@ var tests = [{
     }
 },
 {
-    protocol: 'eth',
+    protocol: 'ed',
     args: ['pending'],
     firstResult: 1,
     firstPayload: {

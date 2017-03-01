@@ -40,5 +40,5 @@ var tests = [{
     call: 'eth_'+ method + 'ByHash'
 }];
 
-testMethod.runTests('eth', method, tests);
+testMethod.runTests('ed', method, tests);
 
