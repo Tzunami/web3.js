@@ -1252,7 +1252,7 @@ SolidityParam.prototype.withOffset = function (offset) {
 };
 
 /**
- * This method should be used to combine solidity params together
+ * This method should be used to combine solidity params togtree
  * eg. when appending an array
  *
  * @method combine
@@ -2141,12 +2141,12 @@ var toHex = function (val) {
  * Returns value of unit in Seed
  *
  * @method getValueOfUnit
- * @param {String} unit the unit to convert to, default ether
+ * @param {String} unit the unit to convert to, default tree
  * @returns {BigNumber} value of the unit (in Seed)
  * @throws error if the unit is not correct:w
  */
 var getValueOfUnit = function (unit) {
-    unit = unit ? unit.toLowerCase() : 'ether';
+    unit = unit ? unit.toLowerCase() : 'tree';
     var unitValue = unitMap[unit];
     if (unitValue === undefined) {
         throw new Error('This unit doesn\'t exists, please use the one of the following units' + JSON.stringify(unitMap, null, 2));
@@ -2155,24 +2155,24 @@ var getValueOfUnit = function (unit) {
 };
 
 /**
- * Takes a number of seed and converts it to any other ether unit.
+ * Takes a number of seed and converts it to any other tree unit.
  *
  * Possible units are:
  *   SI Short   SI Full        Effigy       Other
- * - kseed       femtoether     babbage
- * - mseed       picoether      lovelace
- * - gseed       nanoether      shannon      nano
- * - --         microether     szabo        micro
- * - --         milliether     finney       milli
- * - ether      --             --
- * - kether                    --           grand
- * - mether
- * - gether
- * - tether
+ * - kseed       femtotree     babbage
+ * - mseed       picotree      lovelace
+ * - gseed       nanotree      shannon      nano
+ * - --         microtree     szabo        micro
+ * - --         millitree     finney       milli
+ * - tree      --             --
+ * - ktree                    --           grand
+ * - mtree
+ * - gtree
+ * - ttree
  *
  * @method fromSeed
  * @param {Number|String} number can be a number, number string or a HEX of a decimal
- * @param {String} unit the unit to convert to, default ether
+ * @param {String} unit the unit to convert to, default tree
  * @return {String|Object} When given a BigNumber object it returns one as well, otherwise a number
 */
 var fromSeed = function(number, unit) {
@@ -2186,21 +2186,21 @@ var fromSeed = function(number, unit) {
  *
  * Possible units are:
  *   SI Short   SI Full        Effigy       Other
- * - kseed       femtoether     babbage
- * - mseed       picoether      lovelace
- * - gseed       nanoether      shannon      nano
- * - --         microether     szabo        micro
- * - --         microether     szabo        micro
- * - --         milliether     finney       milli
- * - ether      --             --
- * - kether                    --           grand
- * - mether
- * - gether
- * - tether
+ * - kseed       femtotree     babbage
+ * - mseed       picotree      lovelace
+ * - gseed       nanotree      shannon      nano
+ * - --         microtree     szabo        micro
+ * - --         microtree     szabo        micro
+ * - --         millitree     finney       milli
+ * - tree      --             --
+ * - ktree                    --           grand
+ * - mtree
+ * - gtree
+ * - ttree
  *
  * @method toSeed
  * @param {Number|String|BigNumber} number can be a number, number string or a HEX of a decimal
- * @param {String} unit the unit to convert from, default ether
+ * @param {String} unit the unit to convert from, default tree
  * @return {String|Object} When given a BigNumber object it returns one as well, otherwise a number
 */
 var toSeed = function(number, unit) {
@@ -3203,7 +3203,7 @@ SolidityEvent.prototype.signature = function () {
  * @method encode
  * @param {Object} indexed
  * @param {Object} options
- * @return {Object} everything combined together and encoded
+ * @return {Object} everything combined togtree and encoded
  */
 SolidityEvent.prototype.encode = function (indexed, options) {
     indexed = indexed || {};
@@ -8050,7 +8050,7 @@ module.exports = transfer;
 	         *
 	         * This method invokes _doProcessBlock(offset), which must be implemented by a concrete subtype.
 	         *
-	         * @param {boolean} doFlush Whether all blocks and partial blocks should be processed.
+	         * @param {boolean} doFlush Whtree all blocks and partial blocks should be processed.
 	         *
 	         * @return {WordArray} The processed data.
 	         *
@@ -13332,13 +13332,13 @@ module.exports = transfer;
             // For MAX_EXP > 1e7, e.g. new BigNumber('1e100000000').plus(1) may be slow.
             MAX_EXP = 1e7,                           // 1 to MAX
 
-            // Whether BigNumber Errors are ever thrown.
+            // Whtree BigNumber Errors are ever thrown.
             ERRORS = true,                           // true or false
 
             // Change to intValidatorNoErrors if ERRORS is false.
             isValidInt = intValidatorWithErrors,     // intValidatorWithErrors/intValidatorNoErrors
 
-            // Whether to use cryptographically-secure random number generation, if available.
+            // Whtree to use cryptographically-secure random number generation, if available.
             CRYPTO = false,                          // true or false
 
             /*
@@ -14525,7 +14525,7 @@ module.exports = transfer;
                       ? ( rd || r ) && ( rm == 0 || rm == ( x.s < 0 ? 3 : 2 ) )
                       : rd > 5 || rd == 5 && ( rm == 4 || r || rm == 6 &&
 
-                        // Check whether the digit to the left of the rounding digit is odd.
+                        // Check whtree the digit to the left of the rounding digit is odd.
                         ( ( i > 0 ? j > 0 ? n / pows10[ d - j ] : 0 : xc[ni - 1] ) % 10 ) & 1 ||
                           rm == ( x.s < 0 ? 8 : 7 ) );
 
@@ -15097,7 +15097,7 @@ module.exports = transfer;
         /*
          * Return the number of significant digits of the value of this BigNumber.
          *
-         * [z] {boolean|number} Whether to count integer-part trailing zeros: true, false, 1 or 0.
+         * [z] {boolean|number} Whtree to count integer-part trailing zeros: true, false, 1 or 0.
          */
         P.precision = P.sd = function (z) {
             var n, v,
