@@ -5756,7 +5756,7 @@ var shh = function () {
 };
 
 module.exports = {
-    eth: eth,
+     eth,
     shh: shh
 };
 

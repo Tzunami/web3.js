@@ -58,7 +58,7 @@ component install earthdollar/web3.js
 Use the `web3` object directly from global namespace:
 
 ```js
-console.log(web3); // {eth: .., shh: ...} // it's here!
+console.log(web3); // { .., shh: ...} // it's here!
 ```
 
 Set a provider (HttpProvider)
