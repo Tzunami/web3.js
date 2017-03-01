@@ -1,9 +1,9 @@
 /* jshint ignore:start */
 Package.describe({
-  name: 'ethereumclassic:web3',
+  name: 'earthdollar:web3',
   version: '0.17.0-alpha',
-  summary: 'Ethereum JavaScript API, middleware to talk to a ethreum node over RPC',
-  git: 'https://github.com/ethereumproject/web3.js',
+  summary: 'Earthdollar JavaScript API, middleware to talk to a ethreum node over RPC',
+  git: 'https://github.com/Tzunami/web3.js',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'

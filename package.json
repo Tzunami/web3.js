@@ -1,8 +1,8 @@
 {
   "name": "web3",
-  "namespace": "ethereumclassic",
+  "namespace": "earthdollar",
   "version": "0.17.0-alpha",
-  "description": "Ethereum JavaScript API, middleware to talk to a ethereum node over RPC",
+  "description": "Earthdollar JavaScript API, middleware to talk to a earthdollar node over RPC",
   "main": "./index.js",
   "directories": {
     "lib": "./lib"
@@ -44,14 +44,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ethereumproject/web3.js.git"
+    "url": "https://github.com/Tzunami/web3.js.git"
   },
-  "homepage": "https://github.com/ethereumproject/web3.js",
+  "homepage": "https://github.com/Tzunami/web3.js",
   "bugs": {
-    "url": "https://github.com/ethereumproject/web3.js/issues"
+    "url": "https://github.com/Tzunami/web3.js/issues"
   },
   "keywords": [
-    "ethereum",
+    "earthdollar",
     "javascript",
     "API"
   ],
