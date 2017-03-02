@@ -68,7 +68,7 @@ describe('contract', function () {
                     step = 1;
                     provider.injectResult('0x3');
                     assert.equal(payload.jsonrpc, '2.0');
-                    assert.equal(payload.method, 'eth_newFilter');
+                    assert.equal(payload.method, 'ed_newFilter');
                     assert.deepEqual(payload.params[0], {
                         topics: [
                             '0x' + sha3(signature),
@@ -91,7 +91,7 @@ describe('contract', function () {
                                 '0000000000000000000000000000000000000000000000000000000000000008' 
                     }]);
                     assert.equal(payload.jsonrpc, '2.0');
-                    assert.equal(payload.method, 'eth_getFilterLogs');
+                    assert.equal(payload.method, 'ed_getFilterLogs');
                 } else if (step === 2 && utils.isArray(payload)) {
                     step++;
                     provider.injectBatchResults([[{
@@ -106,7 +106,7 @@ describe('contract', function () {
                                 '0000000000000000000000000000000000000000000000000000000000000008' 
                     }]]);
                     var r = payload.filter(function (p) {
-                        return p.jsonrpc === '2.0' && p.method === 'eth_getFilterChanges' && p.params[0] === '0x3';
+                        return p.jsonrpc === '2.0' && p.method === 'ed_getFilterChanges' && p.params[0] === '0x3';
                     });
                     assert.equal(r.length > 0, true);
                 }
@@ -139,7 +139,7 @@ describe('contract', function () {
                     step = 1;
                     provider.injectResult('0x3');
                     assert.equal(payload.jsonrpc, '2.0');
-                    assert.equal(payload.method, 'eth_newFilter');
+                    assert.equal(payload.method, 'ed_newFilter');
                     assert.deepEqual(payload.params[0], {
                         topics: [
                             '0x' + sha3(signature),
@@ -162,7 +162,7 @@ describe('contract', function () {
                                 '0000000000000000000000000000000000000000000000000000000000000008' 
                     }]);
                     assert.equal(payload.jsonrpc, '2.0');
-                    assert.equal(payload.method, 'eth_getFilterLogs');
+                    assert.equal(payload.method, 'ed_getFilterLogs');
                 } else if (step === 2 && utils.isArray(payload)) {
                     step++;
                     provider.injectBatchResults([[{
@@ -177,7 +177,7 @@ describe('contract', function () {
                                 '0000000000000000000000000000000000000000000000000000000000000008' 
                     }]]);
                     var r = payload.filter(function (p) {
-                        return p.jsonrpc === '2.0' && p.method === 'eth_getFilterChanges' && p.params[0] === '0x3';
+                        return p.jsonrpc === '2.0' && p.method === 'ed_getFilterChanges' && p.params[0] === '0x3';
                     });
                     assert.equal(r.length > 0, true);
                 }
@@ -209,7 +209,7 @@ describe('contract', function () {
                     step = 1;
                     provider.injectResult('0x3');
                     assert.equal(payload.jsonrpc, '2.0');
-                    assert.equal(payload.method, 'eth_newFilter');
+                    assert.equal(payload.method, 'ed_newFilter');
                     assert.deepEqual(payload.params[0], {
                         topics: [],
                         address: '0x1234567890123456789012345678901234567891'
@@ -228,7 +228,7 @@ describe('contract', function () {
                                 '0000000000000000000000000000000000000000000000000000000000000008' 
                     }]);
                     assert.equal(payload.jsonrpc, '2.0');
-                    assert.equal(payload.method, 'eth_getFilterLogs');
+                    assert.equal(payload.method, 'ed_getFilterLogs');
                 } else if (step === 2 && utils.isArray(payload)) {
                     step++;
                     provider.injectBatchResults([[{
@@ -243,7 +243,7 @@ describe('contract', function () {
                                 '0000000000000000000000000000000000000000000000000000000000000008' 
                     }]]);
                     var r = payload.filter(function (p) {
-                        return p.jsonrpc === '2.0' && p.method === 'eth_getFilterChanges' && p.params[0] === '0x3';
+                        return p.jsonrpc === '2.0' && p.method === 'ed_getFilterChanges' && p.params[0] === '0x3';
                     });
                     assert.equal(r.length > 0, true);
                 }
@@ -274,7 +274,7 @@ describe('contract', function () {
             var address = '0x1234567890123456789012345678901234567891';
             
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'ed_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + '0000000000000000000000001234567890123456789012345678901234567891',
                     to: address
@@ -295,7 +295,7 @@ describe('contract', function () {
             var address = '0x1234567890123456789012345678901234567891';
             
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'ed_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + '0000000000000000000000001234567890123456789012345678901234567891',
                     to: address
@@ -314,7 +314,7 @@ describe('contract', function () {
             var signature = 'send(address,uint256)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_sendTransaction');
+                assert.equal(payload.method, 'ed_sendTransaction');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + 
                     '0000000000000000000000001234567890123456789012345678901234567891' + 
@@ -336,7 +336,7 @@ describe('contract', function () {
             var signature = 'balance(address)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'ed_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + '0000000000000000000000001234567890123456789012345678901234567891',
                     to: address,
@@ -359,7 +359,7 @@ describe('contract', function () {
             var signature = 'balance(address)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'ed_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + '0000000000000000000000001234567890123456789012345678901234567891',
                     to: address,
@@ -382,7 +382,7 @@ describe('contract', function () {
             var signature = 'balance(address)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'ed_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + '0000000000000000000000001234567890123456789012345678901234567891',
                     to: address,
@@ -404,7 +404,7 @@ describe('contract', function () {
             var signature = 'send(address,uint256)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_sendTransaction');
+                assert.equal(payload.method, 'ed_sendTransaction');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + 
                         '0000000000000000000000001234567890123456789012345678901234567891' + 
@@ -428,7 +428,7 @@ describe('contract', function () {
             var signature = 'send(address,uint256)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_sendTransaction');
+                assert.equal(payload.method, 'ed_sendTransaction');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + 
                         '0000000000000000000000001234567890123456789012345678901234567891' + 
@@ -452,7 +452,7 @@ describe('contract', function () {
             var address = '0x1234567890123456789012345678901234567891';
             var signature = 'send(address,uint256)';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_sendTransaction');
+                assert.equal(payload.method, 'ed_sendTransaction');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + 
                         '0000000000000000000000001234567890123456789012345678901234567891' + 
@@ -479,7 +479,7 @@ describe('contract', function () {
             var signature = 'send(address,uint256)';
             var address = '0x1234567890123456789012345678901234567891';
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_estimateGas');
+                assert.equal(payload.method, 'ed_estimateGas');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + 
                         '0000000000000000000000001234567890123456789012345678901234567891' + 
@@ -507,7 +507,7 @@ describe('contract', function () {
             }]);
             
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'ed_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + 
                         '0000000000000000000000000000000000000000000000000000000000000020' + 
@@ -534,7 +534,7 @@ describe('contract', function () {
                 result: '0x0000000000000000000000000000000000000000000000000000000000000005'
             }]);
             provider.injectValidation(function (payload) {
-                assert.equal(payload.method, 'eth_call');
+                assert.equal(payload.method, 'ed_call');
                 assert.deepEqual(payload.params, [{
                     data: '0x' + sha3(signature).slice(0, 8) + 
                         '0000000000000000000000000000000000000000000000000000000000000020' + 

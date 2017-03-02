@@ -18,7 +18,7 @@ var tests = [{
     }],
     result: '0x31981',
     formattedResult: 203137,
-    call: 'eth_'+ method
+    call: 'ed_'+ method
 }];
 
 testMethod.runTests('ed', method, tests);

@@ -18,7 +18,7 @@ var tests = [{
         currentBlock: 11,
         highestBlock: 11
     },
-    call: 'eth_syncing'
+    call: 'ed_syncing'
 }];
 
 describe('ed', function () {

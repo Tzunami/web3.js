@@ -9,7 +9,7 @@ var method = 'blockNumber';
 var tests = [{
     result: '0xb',
     formattedResult: 11,
-    call: 'eth_'+ method
+    call: 'ed_'+ method
 }];
 
 describe('web3.eth', function () {

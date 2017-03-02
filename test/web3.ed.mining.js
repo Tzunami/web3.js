@@ -9,7 +9,7 @@ var method = 'mining';
 var tests = [{
     result: true,
     formattedResult: true,
-    call: 'eth_'+ method
+    call: 'ed_'+ method
 }];
 
 describe('web3.eth', function () {
