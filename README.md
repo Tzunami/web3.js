@@ -64,7 +64,7 @@ console.log(web3); // { .., shh: ...} // it's here!
 Set a provider (HttpProvider)
 
 ```js
-web3.setProvider(new web3.providers.HttpProvider('http://localhost:8545'));
+web3.setProvider(new web3.providers.HttpProvider('http://localhost:8811'));
 ```
 
 There you go, now you can use it:
