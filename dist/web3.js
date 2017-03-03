@@ -2936,7 +2936,7 @@ var checkForContractAddress = function(contract, callback){
  * @method ContractFactory
  * @param {Array} abi
  */
-var ContractFactory = function (eth, abi) {
+var ContractFactory = function (ed, abi) {
     this.ed = ed;
     this.abi = abi;
 
@@ -3062,7 +3062,7 @@ ContractFactory.prototype.getData = function () {
  * @param {Array} abi
  * @param {Address} contract address
  */
-var Contract = function (eth, abi, address) {
+var Contract = function (ed, abi, address) {
     this._ed = ed;
     this.transactionHash = null;
     this.address = address;
@@ -3935,7 +3935,7 @@ var sha3 = require('../utils/sha3');
 /**
  * This prototype should be used to call/sendTransaction to solidity functions
  */
-var SolidityFunction = function (eth, json, address) {
+var SolidityFunction = function (ed, json, address) {
     this._ed = ed;
     this._inputTypes = json.inputs.map(function (i) {
         return i.type;
@@ -4446,7 +4446,7 @@ Iban.isValid = function (iban) {
  * @returns {Boolean} true if it is, otherwise false
  */
 Iban.prototype.isValid = function () {
-    return /^XE[0-9]{2}(ETH[0-9A-Z]{13}|[0-9A-Z]{30,31})$/.test(this._iban) &&
+    return /^XE[0-9]{2}(ED[0-9A-Z]{13}|[0-9A-Z]{30,31})$/.test(this._iban) &&
         mod9710(iso13616Prepare(this._iban)) === 1;
 };
 
@@ -6356,23 +6356,23 @@ var exchangeAbi = require('../contracts/SmartExchange.json');
  * @param {Value} value to be tranfered
  * @param {Function} callback, callback
  */
-var transfer = function (eth, from, to, value, callback) {
+var transfer = function (ed, from, to, value, callback) {
     var iban = new Iban(to); 
     if (!iban.isValid()) {
         throw new Error('invalid iban address');
     }
 
     if (iban.isDirect()) {
-        return transferToAddress(eth, from, iban.address(), value, callback);
+        return transferToAddress(ed, from, iban.address(), value, callback);
     }
     
     if (!callback) {
         var address = ed.icapNamereg().addr(iban.institution());
-        return deposit(eth, from, address, value, iban.client());
+        return deposit(ed, from, address, value, iban.client());
     }
 
     ed.icapNamereg().addr(iban.institution(), function (err, address) {
-        return deposit(eth, from, address, value, iban.client(), callback);
+        return deposit(ed, from, address, value, iban.client(), callback);
     });
     
 };
@@ -6386,7 +6386,7 @@ var transfer = function (eth, from, to, value, callback) {
  * @param {Value} value to be tranfered
  * @param {Function} callback, callback
  */
-var transferToAddress = function (eth, from, to, value, callback) {
+var transferToAddress = function (ed, from, to, value, callback) {
     return ed.sendTransaction({
         address: to,
         from: from,
@@ -6404,7 +6404,7 @@ var transferToAddress = function (eth, from, to, value, callback) {
  * @param {String} client unique identifier
  * @param {Function} callback, callback
  */
-var deposit = function (eth, from, to, value, client, callback) {
+var deposit = function (ed, from, to, value, client, callback) {
     var abi = exchangeAbi;
     return ed.contract(abi).at(to).deposit(client, {
         from: from,
