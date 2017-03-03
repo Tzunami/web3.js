@@ -5081,7 +5081,7 @@ module.exports = DB;
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
- * @file eth.js
+ * @file ed.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @author Fabian Vogelsteller <fabian@ethdev.com>
  * @date 2015
@@ -5425,7 +5425,7 @@ module.exports = Ed;
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** @file eth.js
+/** @file ed.js
  * @authors:
  *   Marek Kotewicz <marek@ethdev.com>
  * @date 2015
@@ -5480,7 +5480,7 @@ module.exports = Net;
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
- * @file eth.js
+ * @file ed.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @author Fabian Vogelsteller <fabian@ethdev.com>
  * @date 2015
@@ -5671,7 +5671,7 @@ module.exports = Shh;
 var Method = require('../method');
 
 /// @returns an array of objects describing web3.ed.filter api methods
-var eth = function () {
+var ed = function () {
     var newFilterCall = function (args) {
         var type = args[0];
 
@@ -5756,7 +5756,7 @@ var shh = function () {
 };
 
 module.exports = {
-     eth,
+     ed,
     shh: shh
 };
 
@@ -6367,11 +6367,11 @@ var transfer = function (eth, from, to, value, callback) {
     }
     
     if (!callback) {
-        var address = eth.icapNamereg().addr(iban.institution());
+        var address = ed.icapNamereg().addr(iban.institution());
         return deposit(eth, from, address, value, iban.client());
     }
 
-    eth.icapNamereg().addr(iban.institution(), function (err, address) {
+    ed.icapNamereg().addr(iban.institution(), function (err, address) {
         return deposit(eth, from, address, value, iban.client(), callback);
     });
     
@@ -6387,7 +6387,7 @@ var transfer = function (eth, from, to, value, callback) {
  * @param {Function} callback, callback
  */
 var transferToAddress = function (eth, from, to, value, callback) {
-    return eth.sendTransaction({
+    return ed.sendTransaction({
         address: to,
         from: from,
         value: value
@@ -6406,7 +6406,7 @@ var transferToAddress = function (eth, from, to, value, callback) {
  */
 var deposit = function (eth, from, to, value, client, callback) {
     var abi = exchangeAbi;
-    return eth.contract(abi).at(to).deposit(client, {
+    return ed.contract(abi).at(to).deposit(client, {
         from: from,
         value: value
     }, callback);

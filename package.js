@@ -2,7 +2,7 @@
 Package.describe({
   name: 'earthdollar:web3',
   version: '0.17.0-alpha',
-  summary: 'Earthdollar JavaScript API, middleware to talk to a ethreum node over RPC',
+  summary: 'Earthdollar JavaScript API, middleware to talk to a earthdollar node over RPC',
   git: 'https://github.com/Tzunami/web3.js',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
