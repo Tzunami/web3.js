@@ -945,7 +945,7 @@ var SolidityParam = require('./param');
  * @returns {SolidityParam}
  */
 var formatInputInt = function (value) {
-    BigNumber.config(c.ETH_BIGNUMBER_ROUNDING_MODE);
+    BigNumber.config(c.ED_BIGNUMBER_ROUNDING_MODE);
     var result = utils.padLeft(utils.toTwosComplement(value).round().toString(16), 64);
     return new SolidityParam(result);
 };
@@ -1786,10 +1786,10 @@ if (typeof XMLHttpRequest === 'undefined') {
  */
 
 
-/// required to define ETH_BIGNUMBER_ROUNDING_MODE
+/// required to define ED_BIGNUMBER_ROUNDING_MODE
 var BigNumber = require('bignumber.js');
 
-ar ETH_UNITS = [
+ar ED_UNITS = [
     'tree',
     'quarter',
     'dime',
@@ -1814,11 +1814,11 @@ ar ETH_UNITS = [
 ];
 
 module.exports = {
-    ETH_PADDING: 32,
-    ETH_SIGNATURE_LENGTH: 4,
-    ETH_UNITS: ETH_UNITS,
-    ETH_BIGNUMBER_ROUNDING_MODE: { ROUNDING_MODE: BigNumber.ROUND_DOWN },
-    ETH_POLLING_TIMEOUT: 1000/2,
+    ED_PADDING: 32,
+    ED_SIGNATURE_LENGTH: 4,
+    ED_UNITS: ED_UNITS,
+    ED_BIGNUMBER_ROUNDING_MODE: { ROUNDING_MODE: BigNumber.ROUND_DOWN },
+    ED_POLLING_TIMEOUT: 1000/2,
     defaultBlock: 'latest',
     defaultAccount: undefined
 };
@@ -6146,7 +6146,7 @@ RequestManager.prototype.reset = function (keepIsSyncing) {
  */
 RequestManager.prototype.poll = function () {
     /*jshint maxcomplexity: 6 */
-    this.timeout = setTimeout(this.poll.bind(this), c.ETH_POLLING_TIMEOUT);
+    this.timeout = setTimeout(this.poll.bind(this), c.ED_POLLING_TIMEOUT);
 
     if (Object.keys(this.polls).length === 0) {
         return;
