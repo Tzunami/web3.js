@@ -50,7 +50,7 @@ var tests = [{
     call: 'ed_newPendingTransactionFilter'
 }];
 
-describe('web3.eth', function () {
+describe('web3.ed', function () {
     describe(method, function () {
         tests.forEach(function (test, index) {
             it('property test: ' + index, function () {
@@ -67,7 +67,7 @@ describe('web3.eth', function () {
                });
 
                // call
-               var filter = web3.eth[method].apply(web3.eth, test.args);
+               var filter = web3.ed[method].apply(web3.ed, test.args);
 
                // test filter.get
                if(typeof test.args === 'object') {

@@ -2830,7 +2830,7 @@ var addFunctionsToContract = function (contract) {
     contract.abi.filter(function (json) {
         return json.type === 'function';
     }).map(function (json) {
-        return new SolidityFunction(contract._eth, json, contract.address);
+        return new SolidityFunction(contract._ed, json, contract.address);
     }).forEach(function (f) {
         f.attachToContract(contract);
     });
@@ -2848,11 +2848,11 @@ var addEventsToContract = function (contract) {
         return json.type === 'event';
     });
 
-    var All = new AllEvents(contract._eth._requestManager, events, contract.address);
+    var All = new AllEvents(contract._ed._requestManager, events, contract.address);
     All.attachToContract(contract);
 
     events.map(function (json) {
-        return new SolidityEvent(contract._eth._requestManager, json, contract.address);
+        return new SolidityEvent(contract._ed._requestManager, json, contract.address);
     }).forEach(function (e) {
         e.attachToContract(contract);
     });
@@ -2872,7 +2872,7 @@ var checkForContractAddress = function(contract, callback){
         callbackFired = false;
 
     // wait for receipt
-    var filter = contract._eth.filter('latest', function(e){
+    var filter = contract._ed.filter('latest', function(e){
         if (!e && !callbackFired) {
             count++;
 
@@ -2890,10 +2890,10 @@ var checkForContractAddress = function(contract, callback){
 
             } else {
 
-                contract._eth.getTransactionReceipt(contract.transactionHash, function(e, receipt){
+                contract._ed.getTransactionReceipt(contract.transactionHash, function(e, receipt){
                     if(receipt && !callbackFired) {
 
-                        contract._eth.getCode(receipt.contractAddress, function(e, code){
+                        contract._ed.getCode(receipt.contractAddress, function(e, code){
                             /*jshint maxcomplexity: 6 */
 
                             if(callbackFired || !code)
@@ -3063,7 +3063,7 @@ ContractFactory.prototype.getData = function () {
  * @param {Address} contract address
  */
 var Contract = function (ed, abi, address) {
-    this._eth = ed;
+    this._ed = ed;
     this.transactionHash = null;
     this.address = address;
     this.abi = abi;
@@ -3936,7 +3936,7 @@ var sha3 = require('../utils/sha3');
  * This prototype should be used to call/sendTransaction to solidity functions
  */
 var SolidityFunction = function (ed, json, address) {
-    this._eth = ed;
+    this._ed = ed;
     this._inputTypes = json.inputs.map(function (i) {
         return i.type;
     });
@@ -4016,12 +4016,12 @@ SolidityFunction.prototype.call = function () {
 
 
     if (!callback) {
-        var output = this._eth.call(payload, defaultBlock);
+        var output = this._ed.call(payload, defaultBlock);
         return this.unpackOutput(output);
     } 
         
     var self = this;
-    this._eth.call(payload, defaultBlock, function (error, output) {
+    this._ed.call(payload, defaultBlock, function (error, output) {
         callback(error, self.unpackOutput(output));
     });
 };
@@ -4037,10 +4037,10 @@ SolidityFunction.prototype.sendTransaction = function () {
     var payload = this.toPayload(args);
 
     if (!callback) {
-        return this._eth.sendTransaction(payload);
+        return this._ed.sendTransaction(payload);
     }
 
-    this._eth.sendTransaction(payload, callback);
+    this._ed.sendTransaction(payload, callback);
 };
 
 /**
@@ -4054,10 +4054,10 @@ SolidityFunction.prototype.estimateGas = function () {
     var payload = this.toPayload(args);
 
     if (!callback) {
-        return this._eth.estimateGas(payload);
+        return this._ed.estimateGas(payload);
     }
 
-    this._eth.estimateGas(payload, callback);
+    this._ed.estimateGas(payload, callback);
 };
 
 /**

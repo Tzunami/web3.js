@@ -70,8 +70,8 @@ web3.setProvider(new web3.providers.HttpProvider('http://localhost:8545'));
 There you go, now you can use it:
 
 ```js
-var coinbase = web3.eth.coinbase;
-var balance = web3.eth.getBalance(coinbase);
+var coinbase = web3.ed.coinbase;
+var balance = web3.ed.getBalance(coinbase);
 ```
 
 You can find more examples in [`example`](https://github.com/Tzunami/web3.js/tree/master/example) directory.

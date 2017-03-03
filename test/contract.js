@@ -112,7 +112,7 @@ describe('contract', function () {
                 }
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             var res = 0;
             var event = contract.Changed({from: address});
@@ -183,7 +183,7 @@ describe('contract', function () {
                 }
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             var res = 0;
             var event = contract.Changed({from: address}, function(err, result) {
@@ -249,7 +249,7 @@ describe('contract', function () {
                 }
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             var res = 0;
             var event = contract.allEvents();
@@ -281,7 +281,7 @@ describe('contract', function () {
                 }, 'latest']);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             var r = contract.balance(address);
             assert.deepEqual(new BigNumber(0x32), r);
@@ -302,7 +302,7 @@ describe('contract', function () {
                 }, '0xb']);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             var r = contract.balance(address, 11);
             assert.deepEqual(new BigNumber(0x32), r);
@@ -324,7 +324,7 @@ describe('contract', function () {
                 }]);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             contract.send(address, 17, {from: address});
         });
@@ -345,7 +345,7 @@ describe('contract', function () {
                 }, 'latest']);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             var r = contract.balance(address, {from: address, gas: 50000});
             assert.deepEqual(new BigNumber(0x32), r);
@@ -368,7 +368,7 @@ describe('contract', function () {
                 }, 'latest']);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             var r = contract.balance.call(address, {from: address, gas: 50000});
             assert.deepEqual(new BigNumber(0x32), r);
@@ -391,7 +391,7 @@ describe('contract', function () {
                 }, '0xb']);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             var r = contract.balance.call(address, {from: address, gas: 50000}, 11);
             assert.deepEqual(new BigNumber(0x32), r);
@@ -417,7 +417,7 @@ describe('contract', function () {
                 }]);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             contract.send(address, 17, {from: address, gas: 50000, gasPrice: 3000, value: 10000});
         });
@@ -441,7 +441,7 @@ describe('contract', function () {
                 }]);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             contract.send.sendTransaction(address, 17, {from: address, gas: 50000, gasPrice: 3000, value: 10000});
         });
@@ -465,7 +465,7 @@ describe('contract', function () {
                 }]);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             contract.send.sendTransaction(address, 17, {from: address, gas: 50000, gasPrice: 3000, value: 10000}, function (err) {
                 assert.equal(err, null);
@@ -492,7 +492,7 @@ describe('contract', function () {
                 }]);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             contract.send.estimateGas(address, 17, {from: address, gas: 50000, gasPrice: 3000, value: 10000});
         });
@@ -519,7 +519,7 @@ describe('contract', function () {
                     ]);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
             var result = contract.testArr([3]);
 
             assert.deepEqual(new BigNumber(5), result);
@@ -546,7 +546,7 @@ describe('contract', function () {
                 ]);
             });
 
-            var contract = web3.eth.contract(desc).at(address);
+            var contract = web3.ed.contract(desc).at(address);
 
             contract.testArr([3], function (err, result) {
                 assert.deepEqual(new BigNumber(5), result);

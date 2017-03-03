@@ -25,7 +25,7 @@ var tests = [{
     call: 'ed_'+ method
 }, {
     args: ['0x000000000000000000000000000000000000012d'],
-    formattedArgs: ['0x000000000000000000000000000000000000012d', web3.eth.defaultBlock],
+    formattedArgs: ['0x000000000000000000000000000000000000012d', web3.ed.defaultBlock],
     result: '0x31981',
     formattedResult: new BigNumber('0x31981', 16),
     call: 'ed_'+ method
